@@ -6,6 +6,7 @@ import * as Colors from './Commons/style/Colors'
 
 // Components
 import CharacterList from './Sections/CharacterList/Template/CharacterList';
+import CharacterDetail from './Sections/CharacterDetail/Template/CharacterDetail';
 // Components
 
 // REDUX
@@ -32,6 +33,13 @@ export default class App extends Component {
               component={CharacterList}
               navigationBarStyle={style.navBar}
               titleStyle={style.titleStyle}
+            />
+            <Scene
+              key={'CharacterDetail'}
+              component={CharacterDetail}
+              navigationBarStyle={style.navBar}
+              titleStyle={style.titleStyle}
+              navBarButtonColor={Colors.white}
             />
           </Scene>
         </Router>

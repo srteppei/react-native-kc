@@ -16,7 +16,7 @@ export default class CharacterCell extends Component {
         const image = item.thumbnail ? { uri: item.thumbnail.path + '.' + item.thumbnail.extension } : null;
         return (
             <TouchableOpacity style={style.container} onPress={() => onSelect(item)}>
-                <Image style={style.image} source={image} resizeMode={'contain'} />
+                <Image style={style.image} source={image} resizeMode={'cover'} />
                 <Text style={style.name}>{name}</Text>
             </TouchableOpacity>
         )
@@ -31,6 +31,7 @@ const style = StyleSheet.create({
     },
     image: {
         flex: 1,
+        width: '100%',
         height: 100
     },
     name: {
