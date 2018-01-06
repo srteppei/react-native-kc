@@ -1,5 +1,4 @@
 import * as Webservice from '../../../Webservice/Webservice';
-import Endpoinrt from '../../../Webservice/Constants';
 
 export async function getCharacters (queryOptions) {
     return real(queryOptions);
