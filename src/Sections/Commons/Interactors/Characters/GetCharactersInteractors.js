@@ -2,10 +2,10 @@ import * as Webservice from '../../../Webservice/Webservice';
 import Endpoinrt from '../../../Webservice/Constants';
 
 export async function getCharacters (queryOptions) {
-    return real();
+    return real(queryOptions);
 }
 
-async function real () {
+async function real (queryOptions) {
     return await (await Webservice.search(Webservice.endpoint.characters,queryOptions)).results;
 }
 
