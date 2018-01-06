@@ -5,7 +5,7 @@ import CharacterCell from './CharacterCell';
 
 import { connect } from 'react-redux';
 import * as CharacterActions from '../Redux/Action';
-import * as Colors from '../../Commons/style/Colors';
+import * as Colors from '../../../Commons/style/Colors';
 
 class CharacterList extends Component {
     
@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         updateSelected: (character) => {
             dispatch(CharacterActions.updateCharacterSelected(character));
-            console.log(character);
+            Actions.CharacterDetail({title: character.name})
         }
     }
 }

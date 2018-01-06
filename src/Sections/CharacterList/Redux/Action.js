@@ -1,5 +1,5 @@
 import * as Types from './Types';
-import * as CharacterInteractor from '../../Commons/Interactors/Characters/GetCharactersInteractors';
+import * as CharacterInteractor from '../../../Commons/Interactors/Characters/GetCharactersInteractors';
 
 function updateCharacterList (value) {
     return {
