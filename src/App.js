@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Scene, Router } from 'react-native-router-flux';
 
-import * as Colors from './Sections/Commons/style/Colors'
+import * as Colors from './Commons/style/Colors'
 
 // Components
 import CharacterList from './Sections/CharacterList/Template/CharacterList';
