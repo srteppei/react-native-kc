@@ -1,57 +1,50 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Scene, Router } from 'react-native-router-flux';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import * as Colors from './Sections/Commons/style/Colors'
+
+// Components
+import CharacterList from './Sections/CharacterList/Template/CharacterList';
+// Components
+
+// REDUX
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider, connect } from 'react-redux';
+import thunk from 'redux-thunk';
+
+import * as reducers from './Sections/CharacterList/Redux/Reducer' // Nuestros reducers TODO: Implement reducers
+const reducer = combineReducers(reducers) // Combinamos nuestros reducers
+const store = createStore( // Creamos el store con:
+  reducer, // Nuestros reducer
+  applyMiddleware(thunk) // Nuestro middleware redux-thunk
+)
+// REDUX
 
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+      <Provider store={store} >
+        <Router>
+          <Scene key="root">
+            <Scene
+              key={'CharacterList'}
+              component={CharacterList}
+              navigationBarStyle={style.navBar}
+              titleStyle={style.titleStyle}
+            />
+          </Scene>
+        </Router>
+      </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+const style = StyleSheet.create({
+  navBar: {
+    backgroundColor: Colors.red,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+  titleStyle: {
+    color: Colors.white
+  }
+})
